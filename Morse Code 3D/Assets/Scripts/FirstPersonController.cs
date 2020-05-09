@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using Photon.Pun;
 
-namespace Mirror.Scripts
+namespace Photon.Scripts
 {
-    public class FirstPersonController : NetworkBehaviour
+    public class FirstPersonController : MonoBehaviourPun
     {
+
         public float tapTime;
         public string Code;
         public float waitTime;
@@ -19,7 +21,7 @@ namespace Mirror.Scripts
         bool waiting2;
         public string Word;
         public float endMessage;
-        
+
 
 
 
@@ -34,8 +36,10 @@ namespace Mirror.Scripts
 
         private void Start()
         {
-            if (isLocalPlayer) return;
-            SecondCamera.enabled = false;
+            if (!photonView.IsMine && GetComponent<CharacterController>() != null)
+            {
+                SecondCamera.enabled = false;
+            }
         }
         private void Awake()
         {
@@ -43,15 +47,18 @@ namespace Mirror.Scripts
             characterController = GetComponent<CharacterController>();
             playerCamera = transform.Find("Camera").GetComponent<Camera>();
             Cursor.lockState = CursorLockMode.Locked;
+            if (!photonView.IsMine && GetComponent<CharacterController>() != null)
+            {
+                Destroy(GetComponent<CharacterController>());
+            }
         }
 
-        [Client]
         private void Update()
         {
             MorseCode();
-            if (!hasAuthority) { return; }
+            if (!photonView.IsMine) { return; }
             WaitingForInput();
-            
+
             HandleCharacterLook();
             HandleCharacterMovement();
         }
@@ -107,12 +114,13 @@ namespace Mirror.Scripts
 
         private void MorseCode()
         {
-            if (!isLocalPlayer)
+            if (!photonView.IsMine)
             {
                 wordtext.text = Word;
             }
+
             text.text = Code;
-            
+
             CheckTime();
             CheckTime2();
             if (waiting)
@@ -126,7 +134,7 @@ namespace Mirror.Scripts
                         {
                             Word = Word + result;
                             Code = "";
-                            CmdMessage(Word);
+                            this.photonView.RPC("RPC_SendMessage", RpcTarget.All, Word);
                             endMessage = 0;
                             waiting2 = true;
                         }
@@ -142,27 +150,14 @@ namespace Mirror.Scripts
                 {
                     Word = "";
                     waiting2 = false;
-                    CmdMessage(Word);
                 }
             }
         }
 
-        [Command]
-        public void CmdMessage(string Message)
+        [PunRPC]
+        public void RPC_SendMessage(string message)
         {
-            
-            RpcOutput(Message);
-        }
-
-        [ClientRpc]
-        public void RpcOutput(string Message)
-        {
-            // You dont need do this action again, will be do it only your instance on all clients
-            if (!isLocalPlayer)
-            {
-                Word = Message;
-            }
-
+            Word = message;
         }
 
         public void MorseConverter()
