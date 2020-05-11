@@ -11,7 +11,6 @@ namespace MorseCode3D
 
     public class GameManager : MonoBehaviourPunCallbacks
     {
-
         [Header("GameManager")]
         public GameObject playerPrefab;
         public Transform Helper;
@@ -40,7 +39,7 @@ namespace MorseCode3D
             inside = true;
 
             // add player at correct spawn position
-            if(PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
             {
                 start = Helper.gameObject.transform;
             }

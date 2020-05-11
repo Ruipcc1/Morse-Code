@@ -10,7 +10,6 @@ namespace Photon.Scripts
 {
     public class FirstPersonController : MonoBehaviourPun
     {
-
         public float tapTime;
         public string Code;
         public float waitTime;
@@ -46,7 +45,6 @@ namespace Photon.Scripts
             MorseConverter();
             characterController = GetComponent<CharacterController>();
             playerCamera = transform.Find("Camera").GetComponent<Camera>();
-            Cursor.lockState = CursorLockMode.Locked;
             if (!photonView.IsMine && GetComponent<CharacterController>() != null)
             {
                 Destroy(GetComponent<CharacterController>());
