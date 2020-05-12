@@ -20,6 +20,7 @@ public class CameraRandomizer : MonoBehaviourPunCallbacks
     public List<string> HelperCode = new List<string>();
     public string checkCode;
     bool test;
+    public float failState = 0;
 
 
 
@@ -35,6 +36,8 @@ public class CameraRandomizer : MonoBehaviourPunCallbacks
         HelperCode.Add(coordinates[1]);
         HelperCode.Add(coordinates[2]);
         HelperCode.Add(coordinates[3]);
+
+
     }
 
     private void Awake()
@@ -104,11 +107,16 @@ public class CameraRandomizer : MonoBehaviourPunCallbacks
         if (!test)
         {
             if (HelperCode.Count == 0)
-            {
-                Debug.Log("Winning");
+            { 
+                Debug.Log("Winning");             
                 //Cameras Are Disabled
                 test = true;
             }
+        }
+        if (failState == 3)
+        {
+            //photonView.RPC("LoadMyScene", PhotonTargets.All, SceneManagerHelper.GetActiveScene().myEmptyScene);
+            
         }
     }
 
@@ -118,7 +126,12 @@ public class CameraRandomizer : MonoBehaviourPunCallbacks
         foreach (string z in HelperCode)
         {
             if (z.Equals(checkCode))
-            {
+            { 
+                if (!z.Equals(checkCode))
+                {
+                    failState++;
+                }
+            
                 HelperCode.Remove(checkCode);
             }
         }
@@ -136,5 +149,10 @@ public class CameraRandomizer : MonoBehaviourPunCallbacks
                 grandChild.GetComponent<Text>().text = ButtonCoord[index2++];
             }
         }
+    }
+    
+    public void LoadMyScene(string sceneName)
+    {
+        PhotonNetwork.LoadLevel(sceneName);
     }
 }
