@@ -23,6 +23,7 @@ namespace Photon.Scripts
         public Vector3 StartingPosition;
         private CameraRandomizer cams;
         public FirstPersonController1 Prisoner;
+        //public Image IntMorseCode;
 
 
 
@@ -38,6 +39,7 @@ namespace Photon.Scripts
 
         private void Start()
         {
+            //IntMorseCode = GameObject.Find("InternationalMorseCode");
             if (!photonView.IsMine && GetComponent<CharacterController>() != null)
             {
                 SecondCamera.enabled = false;
@@ -128,8 +130,7 @@ namespace Photon.Scripts
                 //Jump
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    //float jumpSpeed = 30f;
-                    //characterVelocityY = jumpSpeed;
+                   // IntMorseCode.enabled = true;
                 }
             }
 

@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\FirstPersonController1.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\IMC.cs" />
     <Compile Include="Assets\Scripts\Interact.cs" />
     <Compile Include="Assets\Scripts\NetworkManagerMorse.cs" />
     <Compile Include="Assets\Scripts\RockTap.cs" />

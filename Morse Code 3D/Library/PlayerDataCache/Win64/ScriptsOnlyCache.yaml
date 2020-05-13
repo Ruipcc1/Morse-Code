@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - IMC
     - NetworkManagerMorse
     - Photon.Scripts.CameraRandomizer
     - Photon.Scripts.FirstPersonController
@@ -105,19 +106,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14048}
     - Class: 114
-      Script: {instanceID: 14410}
+      Script: {instanceID: 14336}
     - Class: 114
-      Script: {instanceID: 14414}
+      Script: {instanceID: 14412}
     - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 14416}
     - Class: 114
-      Script: {instanceID: 14520}
+      Script: {instanceID: 14484}
     - Class: 114
-      Script: {instanceID: 14916}
+      Script: {instanceID: 14522}
     - Class: 114
-      Script: {instanceID: 15048}
+      Script: {instanceID: 14918}
     - Class: 114
-      Script: {instanceID: 23324}
+      Script: {instanceID: 15050}
+    - Class: 114
+      Script: {instanceID: 61020}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -214,19 +217,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14200}
     - Class: 114
-      Script: {instanceID: 14338}
+      Script: {instanceID: 14340}
     - Class: 114
-      Script: {instanceID: 14410}
+      Script: {instanceID: 14412}
     - Class: 114
-      Script: {instanceID: 14482}
+      Script: {instanceID: 14484}
     - Class: 114
-      Script: {instanceID: 14916}
+      Script: {instanceID: 14918}
     - Class: 114
-      Script: {instanceID: 15048}
+      Script: {instanceID: 15050}
     - Class: 114
-      Script: {instanceID: 15102}
+      Script: {instanceID: 15104}
     - Class: 114
-      Script: {instanceID: 15112}
+      Script: {instanceID: 15114}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1614,6 +1617,12 @@ ScriptsOnlyBuild:
     className: ScoreHelper
   - hash:
       serializedVersion: 2
+      Hash: a0ecabe77fb6a9287a3aa4f8b901ccb3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShowCoords
+  - hash:
+      serializedVersion: 2
       Hash: 854214145f05003bd673c48f11ea1a8a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -2076,10 +2085,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: a0ecabe77fb6a9287a3aa4f8b901ccb3
+      Hash: e8f9a852ee062448016cceec8c178381
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ShowCoords
+    className: IMC
   platform: 19
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
