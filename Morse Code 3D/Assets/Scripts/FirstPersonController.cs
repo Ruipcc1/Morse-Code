@@ -128,8 +128,8 @@ namespace Photon.Scripts
                 //Jump
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    float jumpSpeed = 30f;
-                    characterVelocityY = jumpSpeed;
+                    //float jumpSpeed = 30f;
+                    //characterVelocityY = jumpSpeed;
                 }
             }
 

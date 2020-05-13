@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - Photon.Scripts.FirstPersonController1
     - Photon.Scripts.GameManager
     - Photon.Scripts.Interact
+    - ShowCoords
     PhotonUnityNetworking.Demos.dll:
     - Photon.Pun.Demo.Asteroids.Asteroid
     - Photon.Pun.Demo.Asteroids.Bullet
@@ -18,9 +19,6 @@ ScriptsOnlyBuild:
     - Photon.Pun.Demo.SlotRacer.PlayerControl
     - Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
     PhotonUnityNetworking.Editor.dll:
-    - Photon.Pun.PhotonRigidbodyViewEditor
-    - Photon.Pun.PhotonTransformViewEditor
-    - Photon.Pun.PhotonViewInspector
     - Photon.Pun.PunSceneSettings
     PhotonUnityNetworking.dll:
     - Photon.Pun.PhotonAnimatorView
@@ -97,27 +95,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12674}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 13152}
     - Class: 114
-      Script: {instanceID: 13280}
+      Script: {instanceID: 13278}
     - Class: 114
-      Script: {instanceID: 13402}
+      Script: {instanceID: 13400}
     - Class: 114
-      Script: {instanceID: 13506}
+      Script: {instanceID: 13504}
     - Class: 114
-      Script: {instanceID: 14050}
+      Script: {instanceID: 14048}
     - Class: 114
-      Script: {instanceID: 14412}
+      Script: {instanceID: 14410}
     - Class: 114
-      Script: {instanceID: 14416}
+      Script: {instanceID: 14414}
     - Class: 114
-      Script: {instanceID: 14484}
+      Script: {instanceID: 14482}
     - Class: 114
-      Script: {instanceID: 14522}
+      Script: {instanceID: 14520}
     - Class: 114
-      Script: {instanceID: 14918}
+      Script: {instanceID: 14916}
     - Class: 114
-      Script: {instanceID: 15050}
+      Script: {instanceID: 15048}
+    - Class: 114
+      Script: {instanceID: 23324}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,41 +192,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12792}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 13152}
     - Class: 114
-      Script: {instanceID: 13280}
+      Script: {instanceID: 13278}
     - Class: 114
-      Script: {instanceID: 13506}
+      Script: {instanceID: 13504}
     - Class: 114
-      Script: {instanceID: 13592}
+      Script: {instanceID: 13590}
     - Class: 114
-      Script: {instanceID: 13712}
+      Script: {instanceID: 13710}
     - Class: 114
-      Script: {instanceID: 13824}
+      Script: {instanceID: 13822}
     - Class: 114
-      Script: {instanceID: 13848}
+      Script: {instanceID: 13846}
     - Class: 114
-      Script: {instanceID: 14050}
+      Script: {instanceID: 14048}
     - Class: 114
-      Script: {instanceID: 14156}
+      Script: {instanceID: 14154}
     - Class: 114
-      Script: {instanceID: 14176}
+      Script: {instanceID: 14174}
     - Class: 114
-      Script: {instanceID: 14202}
+      Script: {instanceID: 14200}
     - Class: 114
-      Script: {instanceID: 14340}
+      Script: {instanceID: 14338}
     - Class: 114
-      Script: {instanceID: 14412}
+      Script: {instanceID: 14410}
     - Class: 114
-      Script: {instanceID: 14484}
+      Script: {instanceID: 14482}
     - Class: 114
-      Script: {instanceID: 14918}
+      Script: {instanceID: 14916}
     - Class: 114
-      Script: {instanceID: 15050}
+      Script: {instanceID: 15048}
     - Class: 114
-      Script: {instanceID: 15104}
+      Script: {instanceID: 15102}
     - Class: 114
-      Script: {instanceID: 15114}
+      Script: {instanceID: 15112}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2074,9 +2074,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: a0ecabe77fb6a9287a3aa4f8b901ccb3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShowCoords
   platform: 19
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/Rui/Documents/GitKraken/Morse-Code/Morse Code 3D/Builds/Morse
-    Code 3D.exe
+  playerPath: C:/Users/vinay/Desktop/MC3D/Morse Code 3D.exe

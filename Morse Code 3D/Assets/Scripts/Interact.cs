@@ -46,7 +46,7 @@ namespace Photon.Scripts {
         }
         private void Start()
         {
-            time = 1f;
+            time = 3f;
         }
 
         private void Update()
