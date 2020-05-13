@@ -388,7 +388,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 3
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -416,6 +416,7 @@ MonoBehaviour:
   endMessage: 0
   StartingPosition: {x: 0, y: 0, z: 0}
   Helper: {fileID: 0}
+  Console: 1
   mouseSensitivity: 1
   SecondCamera: {fileID: 8131262125087501796}
 --- !u!114 &-9163997101036371952

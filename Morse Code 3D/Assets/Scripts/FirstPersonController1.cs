@@ -71,11 +71,6 @@ namespace Photon.Scripts
                 {
                     if (GetComponent<PhotonView>().IsMine)
                     {
-                        if(gameObject.tag == "Player")
-                        {
-                            GameManager nm = GameObject.FindObjectOfType<GameManager>();
-                            nm.RespawnTimer = 3f;
-                        }
                         PhotonNetwork.Destroy(gameObject);
                     }
                 }

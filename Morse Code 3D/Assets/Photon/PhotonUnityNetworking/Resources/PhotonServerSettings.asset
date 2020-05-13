@@ -44,6 +44,8 @@ MonoBehaviour:
   - RPC_Spawning2
   - RPC_First
   - RPC_NoMessage
+  - RPC_ContinueMorse
+  - RPC_StopMorse
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

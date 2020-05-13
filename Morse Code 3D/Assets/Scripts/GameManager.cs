@@ -23,6 +23,7 @@ namespace Photon.Scripts
         public CameraRandomizer cams;
         private FirstPersonController Controller1;
         private FirstPersonController1 Controller2;
+        private Interact inter;
 
         public GameObject player;
         public GameObject player2;
@@ -62,7 +63,7 @@ namespace Photon.Scripts
             {
                 time -= Time.deltaTime;
 
-                if (RespawnTimer <= 0)
+                if (time <= 0)
                 {
                     go = true;
                 }
