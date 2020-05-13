@@ -23,6 +23,7 @@ namespace Photon.Scripts
         public Vector3 StartingPosition;
         private CameraRandomizer cams;
         public FirstPersonController Helper;
+        public bool Console = true;
 
 
 
@@ -82,17 +83,26 @@ namespace Photon.Scripts
 
             if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
             {
-                MorseCode();
+                wordtext.text = Word;
+                if (Console)
+                {
+                    MorseCode();
+                }
+
                 if (!done)
                 {
                     Helper = FindObjectOfType<FirstPersonController>();
                     done = true;
                 }
+               
             }
 
-            MorseCode();
+            
             if (!photonView.IsMine) { return; }
-            WaitingForInput();
+            if (Console)
+            {
+                WaitingForInput();
+            }
             
             HandleCharacterLook();
             HandleCharacterMovement();
@@ -149,7 +159,7 @@ namespace Photon.Scripts
 
         private void MorseCode()
         {
-            wordtext.text = Word;
+            
 
             text.text = Code;
 

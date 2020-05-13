@@ -1173,7 +1173,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomIsVisibleProperty
   - hash:
       serializedVersion: 2
-      Hash: 2a322f4abad169372087006730a720da
+      Hash: c2b19adad1e5c5a2f628964a28fce10d
     assemblyName: Assembly-CSharp.dll
     namespaceName: Photon.Scripts
     className: Interact
@@ -1491,7 +1491,7 @@ ScriptsOnlyBuild:
     className: RockTap
   - hash:
       serializedVersion: 2
-      Hash: e3788f8501b727409c14f7c820472851
+      Hash: a19aab3a351c9dbfc9614ccfa6961c59
     assemblyName: Assembly-CSharp.dll
     namespaceName: Photon.Scripts
     className: FirstPersonController1
@@ -2081,5 +2081,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MenuScene.unity
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/Rui/Documents/GitKraken/Morse-Code/Morse Code 3D/Builds/Morse
-    Code 3D.exe
+  playerPath: C:/Users/vinay/Desktop/MC3/Morse Code 3D.exe

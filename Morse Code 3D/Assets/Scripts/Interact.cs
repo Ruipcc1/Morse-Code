@@ -10,12 +10,14 @@ namespace Photon.Scripts {
         public GameObject Buttons;
         public GameObject InteractUI;
         public CameraRandomizer cams;
+        public FirstPersonController1 player;
 
         public void OnTriggerEnter(Collider other)
         {
             if (other.tag == "Player")
             {
                 InteractUI.SetActive(true);
+                
             }
         }
         public void OnTriggerStay(Collider other)
@@ -26,6 +28,7 @@ namespace Photon.Scripts {
                 Buttons.SetActive(true);
                 InteractUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
+                player.Console = false;
             }
         }
         public void OnTriggerExit(Collider other)
@@ -35,6 +38,7 @@ namespace Photon.Scripts {
                 Buttons.SetActive(false);
                 InteractUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
+                player.Console = true;
             }
         }
 
