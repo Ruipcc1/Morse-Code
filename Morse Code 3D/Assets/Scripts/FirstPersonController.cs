@@ -20,6 +20,9 @@ namespace Photon.Scripts
         bool waiting2;
         public string Word;
         public float endMessage;
+        public Vector3 StartingPosition;
+        private CameraRandomizer cams;
+        public FirstPersonController1 Prisoner;
 
 
 
@@ -39,9 +42,12 @@ namespace Photon.Scripts
             {
                 SecondCamera.enabled = false;
             }
+            Cursor.lockState = CursorLockMode.Locked;
+            StartingPosition = transform.position;
         }
         private void Awake()
         {
+            cams = GameObject.Find("GameManager").GetComponent<CameraRandomizer>();
             MorseConverter();
             characterController = GetComponent<CharacterController>();
             playerCamera = transform.Find("Camera").GetComponent<Camera>();
@@ -53,10 +59,38 @@ namespace Photon.Scripts
 
         private void Update()
         {
-            MorseCode();
+            bool done = false;
+            if (cams.failState == 3)
+            {
+                if (GetComponent<PhotonView>().InstantiationId == 0)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    if (GetComponent<PhotonView>().IsMine)
+                    {
+                        if(gameObject.tag == "Player")
+                        {
+                            GameManager nm = GameObject.FindObjectOfType<GameManager>();
+                            nm.RespawnTimer = 3f;
+                        }
+                        PhotonNetwork.Destroy(gameObject);
+                    }
+                }
+            }
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+            {
+                MorseCode();
+                if (!done)
+                {
+                    Prisoner = FindObjectOfType<FirstPersonController1>();
+                    done = true;
+                }
+            }
             if (!photonView.IsMine) { return; }
             WaitingForInput();
-
+            
             HandleCharacterLook();
             HandleCharacterMovement();
         }
@@ -112,10 +146,7 @@ namespace Photon.Scripts
 
         private void MorseCode()
         {
-            if (!photonView.IsMine)
-            {
-                wordtext.text = Word;
-            }
+            wordtext.text = Word;
 
             text.text = Code;
 
@@ -130,9 +161,9 @@ namespace Photon.Scripts
 
                         if (_codes.TryGetValue(Code, out result))
                         {
-                            Word = Word + result;
+                            string newResult = "" + result;
                             Code = "";
-                            this.photonView.RPC("RPC_SendMessage", RpcTarget.All, Word);
+                            photonView.RPC("RPC_SendMessage", RpcTarget.Others, newResult);
                             endMessage = 0;
                             waiting2 = true;
                         }
@@ -146,7 +177,7 @@ namespace Photon.Scripts
             {
                 if (endMessage >= 10)
                 {
-                    Word = "";
+                    photonView.RPC("RPC_NoMessage", RpcTarget.Others);
                     waiting2 = false;
                 }
             }
@@ -155,7 +186,12 @@ namespace Photon.Scripts
         [PunRPC]
         public void RPC_SendMessage(string message)
         {
-            Word = message;
+            Prisoner.Word = Word + message;
+        }
+        [PunRPC]
+        public void RPC_NoMessage()
+        {
+            Prisoner.Word = "";
         }
 
         public void MorseConverter()

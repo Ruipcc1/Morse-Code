@@ -37,6 +37,13 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - RPC_SendMessage
+  - RPC_GameOver
+  - RPC_Coords
+  - RPC_Spawning
+  - RPC_Spawning1
+  - RPC_Spawning2
+  - RPC_First
+  - RPC_NoMessage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

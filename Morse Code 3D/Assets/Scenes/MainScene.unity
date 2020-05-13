@@ -2336,6 +2336,8 @@ GameObject:
   - component: {fileID: 428376668}
   - component: {fileID: 428376667}
   - component: {fileID: 428376669}
+  - component: {fileID: 428376670}
+  - component: {fileID: 428376671}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2357,10 +2359,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 4952140773794073205, guid: b4c0e77fc433e534da8a05280b689be3,
     type: 3}
+  playerPrefab2: {fileID: 8131262125087501793, guid: a21d75ba770d72b498f0480a1e7cc15f,
+    type: 3}
   Helper: {fileID: 1622067809}
   Prisoner: {fileID: 2030051929}
-  start: {fileID: 0}
-  inside: 0
+  RespawnTimer: 0
+  spawn1: 1
+  cams: {fileID: 428376669}
 --- !u!4 &428376668
 Transform:
   m_ObjectHideFlags: 0
@@ -2407,6 +2412,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ButtonCoord: []
+  coordinates:
+  - 
+  - 
+  - 
+  - 
   cameraPosition:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -2419,6 +2429,48 @@ MonoBehaviour:
   - {fileID: 1300111074}
   HelperCode: []
   checkCode: 
+  failState: 0
+  RespawnTimer: 0
+  clicked: 1
+  clickTimer: 0
+  gameManage: {fileID: 428376667}
+--- !u!114 &428376670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428376666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 428376671}
+  viewIdField: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &428376671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428376666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &428567723
 GameObject:
   m_ObjectHideFlags: 0
@@ -11919,7 +11971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622067808}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.37, y: 2, z: -25.95}
+  m_LocalPosition: {x: -7.37, y: 2, z: -24.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12881,6 +12933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Buttons: {fileID: 125588135}
   InteractUI: {fileID: 1320060847}
+  cams: {fileID: 428376669}
 --- !u!65 &1780305267
 BoxCollider:
   m_ObjectHideFlags: 0

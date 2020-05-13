@@ -84,6 +84,11 @@ namespace Photon.Pun
         [FormerlySerializedAs("prefixBackup")]
         public int prefixField = -1;
 
+        public void RPC(string v, object all, object myEmptyScene)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// This is the InstantiationData that was passed when calling PhotonNetwork.Instantiate* (if that was used to spawn this prefab)
         /// </summary>
@@ -100,11 +105,6 @@ namespace Photon.Pun
                 return this.instantiationDataField;
             }
             set { this.instantiationDataField = value; }
-        }
-
-        public void RPC(string v, object all, object message)
-        {
-            throw new NotImplementedException();
         }
 
         internal object[] instantiationDataField;

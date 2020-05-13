@@ -2,35 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interact : MonoBehaviour
-{
+namespace Photon.Scripts {
 
-    public GameObject Buttons;
-    public GameObject InteractUI;
-
-    public void OnTriggerEnter(Collider other)
+    public class Interact : MonoBehaviour
     {
-        if (other.tag == "Player")
+
+        public GameObject Buttons;
+        public GameObject InteractUI;
+        public CameraRandomizer cams;
+
+        public void OnTriggerEnter(Collider other)
         {
-            InteractUI.SetActive(true);
+            if (other.tag == "Player")
+            {
+                InteractUI.SetActive(true);
+            }
         }
-    }
-    public void OnTriggerStay(Collider other)
-    {
-        if(other.tag == "Player" && Input.GetKeyDown(KeyCode.E)) 
+        public void OnTriggerStay(Collider other)
         {
-       
+            if (other.tag == "Player" && Input.GetKeyDown(KeyCode.E))
+            {
+
                 Buttons.SetActive(true);
                 InteractUI.SetActive(false);
-           
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
+        public void OnTriggerExit(Collider other)
         {
-            Buttons.SetActive(false);
-            InteractUI.SetActive(false);
+            if (other.tag == "Player")
+            {
+                Buttons.SetActive(false);
+                InteractUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
+
+        private void Update()
+        {
+            if(cams.failState == 3)
+            {
+                Buttons.SetActive(false);
+            }
         }
     }
 }

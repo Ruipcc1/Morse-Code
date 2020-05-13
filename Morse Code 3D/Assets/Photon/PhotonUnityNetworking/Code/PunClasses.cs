@@ -954,7 +954,12 @@ namespace Photon.Pun
         {
             get { return SceneManager.GetActiveScene().name; }
         }
-        #endif
+
+        public static object GetActiveScene()
+        {
+            throw new NotImplementedException();
+        }
+#endif
     }
 
 
