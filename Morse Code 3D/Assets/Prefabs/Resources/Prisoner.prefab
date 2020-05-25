@@ -417,9 +417,7 @@ MonoBehaviour:
   StartingPosition: {x: 0, y: 0, z: 0}
   Helper: {fileID: 0}
   Console: 1
-  IntMorseCode: {fileID: 0}
   mouseSensitivity: 1
-  SecondCamera: {fileID: 8131262125087501796}
 --- !u!114 &-9163997101036371952
 MonoBehaviour:
   m_ObjectHideFlags: 0

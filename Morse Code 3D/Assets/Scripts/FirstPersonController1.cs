@@ -35,7 +35,6 @@ namespace Photon.Scripts
         private float cameraVerticalAngle;
         private float characterVelocityY;
         private Camera playerCamera;
-        public Camera SecondCamera;
 
 
         private void Start()
@@ -43,7 +42,7 @@ namespace Photon.Scripts
             //IntMorseCode = GameObject.Find("InternationalMorseCode");
             if (!photonView.IsMine && GetComponent<CharacterController>() != null)
             {
-                SecondCamera.enabled = false;
+                playerCamera.enabled = false;
             }
             Cursor.lockState = CursorLockMode.Locked;
             StartingPosition = transform.position;
@@ -57,6 +56,7 @@ namespace Photon.Scripts
             if (!photonView.IsMine && GetComponent<CharacterController>() != null)
             {
                 Destroy(GetComponent<CharacterController>());
+                photonView.RPC("RPC_DeleteAudioListener", RpcTarget.All);
             }
         }
 
@@ -73,6 +73,9 @@ namespace Photon.Scripts
                 {
                     if (GetComponent<PhotonView>().IsMine)
                     {
+                        cams.failState = 0;
+                        GameManager nm = GameObject.FindObjectOfType<GameManager>();
+                        nm.RespawnTimer = 3f;
                         PhotonNetwork.Destroy(gameObject);
                     }
                 }
@@ -135,13 +138,6 @@ namespace Photon.Scripts
             if (characterController.isGrounded)
             {
                 characterVelocityY = 0f;
-                //Jump
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    // float jumpSpeed = 30f;
-                    //characterVelocityY = jumpSpeed;
-                  //  IntMorseCode.enabled = true;
-                }
             }
 
             //Apply Gravitiy to the velocity
@@ -157,8 +153,6 @@ namespace Photon.Scripts
 
         private void MorseCode()
         {
-            
-
             text.text = Code;
 
             CheckTime();
@@ -204,6 +198,12 @@ namespace Photon.Scripts
         public void RPC_SendMessage(string message)
         {
             Helper.Word = Helper.Word + message;
+        }
+        [PunRPC]
+        public void RPC_DeleteAudioListener()
+        {
+            AudioListener newAudio = playerCamera.GetComponent<AudioListener>();
+            Destroy(newAudio);
         }
 
         public void MorseConverter()

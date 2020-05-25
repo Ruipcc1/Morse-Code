@@ -23,7 +23,6 @@ namespace Photon.Scripts
         public Vector3 StartingPosition;
         private CameraRandomizer cams;
         public FirstPersonController1 Prisoner;
-        //public Image IntMorseCode;
 
 
 
@@ -34,7 +33,6 @@ namespace Photon.Scripts
         private float cameraVerticalAngle;
         private float characterVelocityY;
         private Camera playerCamera;
-        public Camera SecondCamera;
 
 
         private void Start()
@@ -42,7 +40,7 @@ namespace Photon.Scripts
             //IntMorseCode = GameObject.Find("InternationalMorseCode");
             if (!photonView.IsMine && GetComponent<CharacterController>() != null)
             {
-                SecondCamera.enabled = false;
+                playerCamera.enabled = false;
             }
             Cursor.lockState = CursorLockMode.Locked;
             StartingPosition = transform.position;
@@ -56,6 +54,7 @@ namespace Photon.Scripts
             if (!photonView.IsMine && GetComponent<CharacterController>() != null)
             {
                 Destroy(GetComponent<CharacterController>());
+                photonView.RPC("RPC_DeleteAudioListener", RpcTarget.All);
             }
         }
 
@@ -72,11 +71,9 @@ namespace Photon.Scripts
                 {
                     if (GetComponent<PhotonView>().IsMine)
                     {
-                        if(gameObject.tag == "Player")
-                        {
-                            GameManager nm = GameObject.FindObjectOfType<GameManager>();
-                            nm.RespawnTimer = 3f;
-                        }
+                        cams.failState = 0;
+                        GameManager nm = GameObject.FindObjectOfType<GameManager>();
+                        nm.RespawnTimer2 = 3f;
                         PhotonNetwork.Destroy(gameObject);
                     }
                 }
@@ -127,11 +124,6 @@ namespace Photon.Scripts
             if (characterController.isGrounded)
             {
                 characterVelocityY = 0f;
-                //Jump
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                   // IntMorseCode.enabled = true;
-                }
             }
 
             //Apply Gravitiy to the velocity
@@ -193,6 +185,12 @@ namespace Photon.Scripts
         public void RPC_NoMessage()
         {
             Prisoner.Word = "";
+        }
+        [PunRPC]
+        public void RPC_DeleteAudioListener()
+        {
+            AudioListener newAudio = playerCamera.GetComponent<AudioListener>();
+            Destroy(newAudio);
         }
 
         public void MorseConverter()

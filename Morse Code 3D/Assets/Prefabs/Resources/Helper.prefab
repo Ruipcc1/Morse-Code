@@ -417,7 +417,6 @@ MonoBehaviour:
   StartingPosition: {x: 0, y: 0, z: 0}
   Prisoner: {fileID: 0}
   mouseSensitivity: 1
-  SecondCamera: {fileID: 4952140773794073200}
 --- !u!114 &7415652220324954922
 MonoBehaviour:
   m_ObjectHideFlags: 0

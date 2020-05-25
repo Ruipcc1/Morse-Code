@@ -46,6 +46,8 @@ MonoBehaviour:
   - RPC_NoMessage
   - RPC_ContinueMorse
   - RPC_StopMorse
+  - RPC_DeleteAudioListener
+  - RPC_Win
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -1750,6 +1750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntMorseCode: {fileID: 41539532}
+  isEnabled: 0
 --- !u!4 &179246052
 Transform:
   m_ObjectHideFlags: 0
@@ -3960,6 +3961,7 @@ MonoBehaviour:
   Helper: {fileID: 1622067809}
   Prisoner: {fileID: 2030051929}
   RespawnTimer: 0
+  RespawnTimer2: 0
   spawn1: 1
   cams: {fileID: 428376669}
   player: {fileID: 0}
@@ -4027,6 +4029,7 @@ MonoBehaviour:
   - {fileID: 1300111074}
   HelperCode: []
   checkCode: 
+  test: 1
   failState: 0
   RespawnTimer: 0
   clicked: 1
@@ -14464,6 +14467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coords: {fileID: 1302130972}
   EtoShow: {fileID: 1899748338}
+  cams: {fileID: 428376669}
 --- !u!4 &1457413140
 Transform:
   m_ObjectHideFlags: 0

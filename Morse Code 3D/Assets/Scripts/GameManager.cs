@@ -19,6 +19,7 @@ namespace Photon.Scripts
         public Player localPlayer;
         float SpawnPoint;
         public float RespawnTimer;
+        public float RespawnTimer2;
         public bool spawn1 = true;
         public CameraRandomizer cams;
         private FirstPersonController Controller1;
@@ -52,7 +53,7 @@ namespace Photon.Scripts
             if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
             {
                 cams.GetCoordinates();
-
+                cams.test = false;
             }
         }
 
@@ -77,6 +78,15 @@ namespace Photon.Scripts
                 {
                     cams.failState = 0;
                     SpawnPlayer1();
+                }
+            }
+
+            if (RespawnTimer2 > 0)
+            {
+                RespawnTimer2 -= Time.deltaTime;
+
+                if (RespawnTimer2 <= 0)
+                {
                     SpawnPlayer2();
                 }
             }
@@ -104,11 +114,11 @@ namespace Photon.Scripts
 
         void SpawnPlayer1()
         {
-            GameObject player = PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Helper.position, Helper.rotation);
+            player = PhotonNetwork.Instantiate(playerPrefab.gameObject.name, Helper.position, Helper.rotation);
         }
         void SpawnPlayer2()
         {
-            GameObject player2 = PhotonNetwork.Instantiate(playerPrefab2.gameObject.name, Prisoner.position, Prisoner.rotation);
+            player2 = PhotonNetwork.Instantiate(playerPrefab2.gameObject.name, Prisoner.position, Prisoner.rotation);
         }
 
         [PunRPC]

@@ -28,7 +28,7 @@ namespace Photon.Scripts
         public List<string> HelperCode = new List<string>();
 
         public string checkCode;
-        bool test;
+        public bool test = true;
         public int failState = 0;
         Vector3 RestartPosition;
         public float RespawnTimer;
@@ -122,23 +122,25 @@ namespace Photon.Scripts
             {
                 if (HelperCode.Count == 0)
                 {
-                    Debug.Log("Winning");
+                    photonView.RPC("RPC_Win", RpcTarget.All);
                     //Cameras Are Disabled
-                    test = true;
                 }
             }
             if (failState == 3)
             {
-                if (gameManage.RespawnTimer <= 1)
-                {
-                    GetCoordinates();
-                }
+                GetCoordinates();
             }
         }
         [PunRPC]
         public void RPC_GameOver(int fails)
         {
             failState = fails;
+        }
+        [PunRPC]
+        public void RPC_Win()
+        {
+            Debug.Log("Winning");
+            test = true;
         }
         [PunRPC]
         public void RPC_Coords(string cords1, string cords2, string cords3, string cords4)
@@ -168,6 +170,7 @@ namespace Photon.Scripts
             {
                 if (z.Equals(checkCode))
                 {
+
                     HelperCode.Remove(checkCode);
                     clicked = false;
                 }
